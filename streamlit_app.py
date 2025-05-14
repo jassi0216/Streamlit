@@ -120,7 +120,7 @@ with log_container:
     if level == "error":
       st.error(f"{timestamp}: {message}")
     elif level == "warning":
-      st.warning(f" (timestamp): (message}")
+      st.warning(f" (timestamp): {message}")
     else:
       st.info(f" {timestamp}: {message}")
     
