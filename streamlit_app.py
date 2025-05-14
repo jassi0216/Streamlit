@@ -28,8 +28,8 @@ def validate_url(url):
 
 # Send request to backend scraper API (placeholder)
 def send_to_webhook(data):
-    WEBHOOK_URL = "YOUR_N8N_WEBHOOK_URL"
-    BEARER_TOKEN = "YOUR_BEARER_TOKEN"
+    WEBHOOK_URL = "https://jasmeet021.app.n8n.cloud/webhook/3fea7385-2263-47c1-9a10-b7dd7b29740b"
+    BEARER_TOKEN = "apify_api_XSei3V9k2FDMbsuRrzuftHrkd7l4MZ2ztREk"
    
     headers = {
         "Authorization": f"Bearer {BEARER_TOKEN}",
