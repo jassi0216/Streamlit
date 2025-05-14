@@ -107,22 +107,25 @@ def main():
            # Display success message
            st.success("Scraping pross initiated successfully!")
 
-# Display scraper Logs
-if st.session_state.scraper_logs: 
-  st.subheader("Scraper Logs")
-  log_container = st.container()
+ # Display scraper Logs
+ if st.session_state.scraper_logs: 
+     st.subheader("Scraper Logs")
+     log_container = st.container()
 
-with log_container:
-  for log in st.session_state.scraper_logs:
-    timestamp = log.get("timestamp", "")
-    message = log.get("message", "")
-    level = log.get("level", "info")
-    if level == "error":
-      st.error(f"{timestamp}: {message}")
-    elif level == "warning":
-      st.warning(f" (timestamp): {message}")
-    else:
-      st.info(f" {timestamp}: {message}")
+ with log_container:
+     for log in st.session_state.scraper_logs:
+     timestamp = log.get("timestamp", "")
+     message = log.get("message", "")
+     level = log.get("level", "info")
+     if level == "error":
+       st.error(f"{timestamp}: {message}")
+     elif level == "warning":
+       st.warning(f" (timestamp): {message}")
+     else:
+       st.info(f" {timestamp}: {message}")
+
+if __name__ == "__main__":
+    main()
     
 if __name__ == "__main()__":
   main()
