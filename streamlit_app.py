@@ -74,17 +74,16 @@ def main():
 
       if submitted:
          #Validote inputs
-         if not cookie_json or not validate_json(cookie_json): 
-           st.error("Please enter valid JSON for the cookie")
-           return
-
-      if not validate_url(search_url):
-        st.error("Please enter a valid LinkedIn Sales Navigator URL")
-        return
-
-      if not email or '@' not in email:
-        st.error("Please enter a valid email address")
-        return
+         if not cookie_json or not validate_json(cookie_json):
+                st.error("Please enter valid JSON for the cookie")
+                return
+         
+         if not validate_url(search_url):
+                st.error("Please enter a valid LinkedIn Sales Navigator URL")
+                return
+         if not email or '@' not in email:
+                st.error("Please enter a valid email address")
+                return
 
       # Prepare payload
       payload = {
@@ -97,32 +96,33 @@ def main():
       }
 
       # Send to webhook and get response
-      with st.spinner ("Processing your request..."): 
-        response = send_to_webhook(payload)
-
-      if response:
+      with st.spinner ("Processing your request..."):
+          response = send_to_webhook(payload)
+          
+          if response:
            #Update scraper Logs
            st.session_state.scraper_logs = response.get("scraperLogs", [])
 
            # Display success message
            st.success("Scraping pross initiated successfully!")
 
- # Display scraper Logs
- if st.session_state.scraper_logs: 
-     st.subheader("Scraper Logs")
-     log_container = st.container()
-
- with log_container:
-     for log in st.session_state.scraper_logs:
-     timestamp = log.get("timestamp", "")
-     message = log.get("message", "")
-     level = log.get("level", "info")
-     if level == "error":
-       st.error(f"{timestamp}: {message}")
-     elif level == "warning":
-       st.warning(f" (timestamp): {message}")
-     else:
-       st.info(f" {timestamp}: {message}")
-
-if __name__ == "__main__":
-    main()
+    # Display scraper Logs
+    if st.session_state.scraper_logs: 
+        st.subheader("Scraper Logs")
+        log_container = st.container()
+        
+        with log_container:
+            for log in st.session_state.scraper_logs:
+                timestamp = log.get("timestamp", "")
+                message = log.get("message", "")
+                level = log.get("level", "info")
+                
+                if level == "error":
+                    st.error(f"{timestamp}: {message}")
+                elif level == "warning":
+                    st.warning(f" (timestamp): {message}")
+                else:
+                    st.info(f" {timestamp}: {message}")
+    
+if __name__ == "__main()__":
+  main()
